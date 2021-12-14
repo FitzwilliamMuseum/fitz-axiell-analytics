@@ -16,4 +16,5 @@ use App\Http\Controllers\LocationMovesController;
 
 Route::view('/', 'select');
 // Route::get('/moves', [LocationMovesController::class, 'view'])->name('moves');
-Route::get('/moves/{timespan?}', 'App\Http\Controllers\LocationMovesController@moves')->name('moves');
+Route::get('/moves/on-display/{timespan?}', 'App\Http\Controllers\LocationMovesController@moves')->name('moves');
+Route::get('/moves/in-storage/{timespan?}', 'App\Http\Controllers\LocationMovesController@storage')->name('moves.storage');

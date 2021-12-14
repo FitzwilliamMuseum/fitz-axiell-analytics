@@ -11,7 +11,7 @@
 <body>
   @include('includes.nav')
 
-  <div class="container">
+  <div class="container-fluid">
     @yield('content')
   </div>
   <script src="{{ asset('js/app.js') }}" defer></script>
