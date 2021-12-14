@@ -15,6 +15,7 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
+        "laraveldaily/laravel-charts": "^0.1.28",
         "sven/artisan-view": "^3.3",
         "upthemedia/xss-protection": "^0.0.8"
     },
