@@ -13,7 +13,7 @@
         <a class="nav-link" href="https://collection.beta.fitz.ms/">Collections Online</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('moves') }}">Adlib Moves</a>
+        <a class="nav-link" href="{{ route('moves') }}">Object Moves</a>
       </li>
       <li class="nav-item">
         <a class="nav-link " href="http://adlib.fitzmuseum.cam.ac.uk/Collections/" >Axiell Collections</a>
