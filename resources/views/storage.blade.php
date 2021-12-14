@@ -5,6 +5,8 @@
 <div class="my-2">
 <a class="btn btn-dark" href="{{ route('moves.storage',['week']) }}">Last 7 days</a>
 <a class="btn btn-dark" href="{{ route('moves.storage',['month']) }}">Last month</a>
+<a class="btn btn-info" href="{{ route('moves') }}">Or see what's moved on display</a>
+
 </div>
 <p>
   Number of objects: {{$adlibData->adlibJSON->diagnostic->hits}}

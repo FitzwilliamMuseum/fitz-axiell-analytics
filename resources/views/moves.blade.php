@@ -8,6 +8,7 @@
 <a class="btn btn-dark" href="{{ route('moves',['quarter']) }}">Quarter</a>
 <a class="btn btn-dark" href="{{ route('moves',['6month']) }}">Six months</a>
 <a class="btn btn-dark" href="{{ route('moves',['year']) }}">Last year</a>
+<a class="btn btn-info" href="{{ route('moves.storage') }}">Or see what's moved in storage</a>
 </div>
 <p>
   Number of objects: {{$adlibData->adlibJSON->diagnostic->hits}}
