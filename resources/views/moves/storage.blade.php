@@ -16,7 +16,7 @@
 @include('includes.movesCharts')
 @endif
 @if(preg_match('/\d{4}\-\d{2}\-\d{2}/', $adlibData->items()['adlibJSON']->diagnostic->search, $matches))
-<div class="alert alert-info">
+<div class="alert alert-info text-center">
   Search starts from: {{ Carbon\Carbon::parse($matches[0])->format('l dS F Y')  }} <strong>Today's date is {{ Carbon\Carbon::today()->format('l dS F Y')   }}</strong>
 </div>
 @endif
