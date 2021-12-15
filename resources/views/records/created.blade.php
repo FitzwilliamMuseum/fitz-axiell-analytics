@@ -5,13 +5,15 @@
 <div class="my-2">
   <a class="btn btn-dark" href="{{ route('created',['week']) }}">Last 7 days</a>
   <a class="btn btn-dark" href="{{ route('created',['month']) }}">Last month</a>
+  <a class="btn btn-info" href="{{ route('updated') }}">Or see what was updated?</a>
+
 </div>
 
 <p>
   Number of objects: {{$adlibData->adlibJSON->diagnostic->hits}}
 </p>
 
-@include('includes.movesCharts')
+@include('includes.recordsCharts')
 
 @if(preg_match('/\d{4}\-\d{2}\-\d{2}/', $adlibData->adlibJSON->diagnostic->search, $matches))
 <div class="alert alert-info">
