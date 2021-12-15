@@ -30,6 +30,7 @@
         <th>Maker or Creator</th>
         <th>Current Location</th>
         <th>Exact Location</th>
+        <th>Updated</th>
     	</tr>
     </thead>
 
@@ -64,7 +65,9 @@
              {{ $object->current_location[0] ?? ''}}
            @endisset
          </td>
-
+         <td>
+           {{ Carbon\Carbon::parse($object->{"@attributes"}->modification)->format('d-m-Y h:m a')}}
+         </td>
        </tr>
      @endforeach
    </tbody>
