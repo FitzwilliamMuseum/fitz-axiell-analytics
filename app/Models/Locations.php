@@ -30,12 +30,13 @@ class Locations {
       default:
         $q ='current_location.date%3E%22today-8%22%20and%20';
     }
-    $key = md5(serialize($location . $q . $perPage . $offset));
+    $sort = urlencode(' sort edit.date descending ');
+    $key = md5(serialize($location . $q . $perPage . $offset . $sort));
     $expiresAt = now()->addMinutes(60);
     if (Cache::has($key)) {
       $data = Cache::get($key);
     } else {
-      $response = Http::get(env('ADLIB_URL').'?&database=objects.uf&search='. $q .'current_location-%3Elocation.type=' . $location . '&limit=' . $perPage .'&startfrom=' . $offset . '&output=json');
+      $response = Http::get(env('ADLIB_URL').'?&database=objects.uf&search='. $q .'current_location-%3Elocation.type=' . $location . $sort . '&limit=' . $perPage .'&startfrom=' . $offset . '&output=json');
       $data = $response->object();
       Cache::put($key, $data, $expiresAt);
     }

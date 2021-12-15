@@ -61,7 +61,7 @@
           {{ $object->current_location[0] }}
         </td>
         <td>
-          {{ Carbon\Carbon::parse($object->{"@attributes"}->modification )->format(''d-m-Y h:m a'')}}
+          {{ Carbon\Carbon::parse($object->{"@attributes"}->modification )->format('d-m-Y h:m a')}}
         </td>
     	</tr>
     @endforeach
