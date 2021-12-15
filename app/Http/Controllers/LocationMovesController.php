@@ -13,12 +13,16 @@ class LocationMovesController extends Controller
 	public function moves(Request $request)
 	{
 		$adlibData = Locations::getLocationData($request, 'display');
-		return view('moves.moves')->with('adlibData', $adlibData);
+		$adlibData->setPath(route('moves', [$request->segment(3)]));
+		$chartData =  Locations::getLocationDataCharts($request, 'display');
+		return view('moves.moves', compact('adlibData', 'chartData'));
 	}
 
 	public function storage(Request $request)
 	{
 		$adlibData = Locations::getLocationData($request, 'storage');
-		return view('moves.storage')->with('adlibData', $adlibData);
+		$adlibData->setPath(route('moves.storage',[$request->segment(3)]));
+		$chartData =  Locations::getLocationDataCharts($request, 'storage');
+		return view('moves.storage', compact('adlibData', 'chartData'));
 	}
 }

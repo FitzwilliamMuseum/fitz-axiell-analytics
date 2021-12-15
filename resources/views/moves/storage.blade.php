@@ -6,15 +6,18 @@
 <div class="my-2">
   <a class="btn btn-dark" href="{{ route('moves.storage',['week']) }}">Last 7 days</a>
   <a class="btn btn-dark" href="{{ route('moves.storage',['month']) }}">Last month</a>
+  <a class="btn btn-dark" href="{{ route('moves.storage',['quarter']) }}">Quarter</a>
+  <a class="btn btn-dark" href="{{ route('moves.storage',['6month']) }}">Six months</a>
+  <a class="btn btn-dark" href="{{ route('moves.storage',['year']) }}">Last year</a>
   <a class="btn btn-info" href="{{ route('moves') }}">Or see what's moved on display</a>
 </div>
 <p>
-  Number of objects: {{$adlibData->adlibJSON->diagnostic->hits}}
+  Number of objects: {{ $adlibData->total()  }}
 </p>
-
+@if($adlibData->onFirstPage())
 @include('includes.movesCharts')
-
-@if(preg_match('/\d{4}\-\d{2}\-\d{2}/', $adlibData->adlibJSON->diagnostic->search, $matches))
+@endif
+@if(preg_match('/\d{4}\-\d{2}\-\d{2}/', $adlibData->items()['adlibJSON']->diagnostic->search, $matches))
 <div class="alert alert-info">
   Search starts from: {{ Carbon\Carbon::parse($matches[0])->format('l dS F Y')  }} <strong>Today's date is {{ Carbon\Carbon::today()->format('l dS F Y')   }}</strong>
 </div>
@@ -30,11 +33,11 @@
         <th>Maker or Creator</th>
         <th>Current Location</th>
         <th>Exact Location</th>
+        <th>Updated</th>
     	</tr>
     </thead>
-
 	 <tbody>
-    @foreach ($adlibData->adlibJSON->recordList->record as $object)
+    @foreach ($adlibData->items()['adlibJSON']->recordList->record as $object)
     	<tr>
         <th scope="row">
           <a href="https://collection.beta.fitz.ms/id/object/{{ $object->priref['0'] }}">{{ $object->object_number['0'] }}</a>
@@ -57,11 +60,16 @@
         <td>
           {{ $object->current_location[0] }}
         </td>
-
+        <td>
+          {{ Carbon\Carbon::parse($object->{"@attributes"}->modification )->format(''d-m-Y h:m a'')}}
+        </td>
     	</tr>
     @endforeach
 	</tbody>
 </table>
-
-
+<div class="d-flex justify-content-center">
+  <nav aria-label="Page navigation" >
+    {{ $adlibData->appends(request()->except('page'))->links('vendor.pagination.bootstrap-4') }}
+  </nav>
+</div>
 @endsection

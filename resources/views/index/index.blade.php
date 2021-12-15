@@ -10,25 +10,25 @@
       <div class="col-md-6">
         <h2 class="lead text-center">Display moves</h2>
         @include('includes.movesTable', ['data' => $display])
-        <a class="btn btn-info my-2" href="{{ route('moves') }}">Learn more</a>
+        <a class="btn btn-info my-2" href="{{ route('moves') }}">View analysis and more</a>
       </div>
 
       <div class="col-md-6">
         <h2 class="lead text-center">Storage moves</h2>
         @include('includes.movesTable',['data' => $storage])
-        <a class="btn btn-info my-2" href="{{ route('moves.storage') }}">Learn more</a>
+        <a class="btn btn-info my-2" href="{{ route('moves.storage') }}">View analysis and more</a>
       </div>
 
       <div class="col-md-6">
         <h2 class="lead text-center">Created records</h2>
         @include('includes.recordsTable',['data' => $created])
-        <a class="btn btn-info my-2" href="{{ route('created') }}">Learn more</a>
+        <a class="btn btn-info my-2" href="{{ route('created') }}">View analysis and more</a>
       </div>
 
       <div class="col-md-6">
         <h2 class="lead text-center">Updated records</h2>
         @include('includes.recordsTable',['data' => $updated])
-        <a class="btn btn-info my-2" href="{{ route('updated') }}">Learn more</a>
+        <a class="btn btn-info my-2" href="{{ route('updated') }}">View analysis and more</a>
       </div>
     </div>
   </div>

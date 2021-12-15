@@ -12,8 +12,8 @@ class IndexController extends Controller
 
   public function index(Request $request)
   {
-    $display = Locations::getLocationData($request, 'display');
-    $storage = Locations::getLocationData($request, 'storage');
+    $display = Locations::getLocationDataCharts($request, 'display');
+    $storage = Locations::getLocationDataCharts($request, 'storage');
     $created = Updated::getCreatedData($request);
     $updated = Updated::getUpdatedData($request);
     return view('index.index', compact('display', 'storage', 'created', 'updated'));

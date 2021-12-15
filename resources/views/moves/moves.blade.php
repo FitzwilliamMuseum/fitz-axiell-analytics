@@ -12,18 +12,18 @@
 </div>
 
 <p>
-  Number of objects: {{$adlibData->adlibJSON->diagnostic->hits}}
+  Number of objects: {{ $adlibData->total()  }}
 </p>
-
+@if($adlibData->onFirstPage())
 @include('includes.movesCharts')
-
-@if(preg_match('/\d{4}\-\d{2}\-\d{2}/', $adlibData->adlibJSON->diagnostic->search, $matches))
+@endif
+@if(preg_match('/\d{4}\-\d{2}\-\d{2}/', $adlibData->items()['adlibJSON']->diagnostic->search, $matches))
 <div class="alert alert-info">
   Search starts from: {{ Carbon\Carbon::parse($matches[0])->format('l dS F Y')  }} <strong>Today's date is {{ Carbon\Carbon::today()->format('l dS F Y')   }}</strong>
 </div>
 @endif
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-responsive table-hover ">
     <thead class="thead-dark">
       <tr>
         <th>Object Number</th>
@@ -33,36 +33,43 @@
         <th>Maker or Creator</th>
         <th>Current Location</th>
         <th>Exact Location</th>
+        <th>Updated</th>
     	</tr>
     </thead>
+	 <tbody>
+    @foreach ($adlibData->items()['adlibJSON']->recordList->record as $object)
+    	<tr>
+        <th scope="row">
+          <a href="https://collection.beta.fitz.ms/id/object/{{ $object->priref['0'] }}">{{ $object->object_number['0'] }}</a>
+        </th>
+        <td>
+          {{ $object->administration_name[0]->value[1] ??  '' }}
+        </td>
+        <td>
+          {{ $object->title[0] ?? 'No title has been created' }}
+        </td>
+        <td>
+          {{ ucfirst($object->object_name[0] ?? '') }}
+        </td>
+        <td>
+          {{ $object->creator[0] ?? '' }}
+        </td>
 
-    <tbody>
-     @foreach ($adlibData->adlibJSON->recordList->record as $object)
-       <tr>
-         <th scope="row">
-           <a href="https://collection.beta.fitz.ms/id/object/{{ $object->priref['0'] }}">{{ $object->object_number['0'] }}</a>
-         </th>
-         <td>
-           {{ $object->administration_name[0]->value[1] ??  '' }}
-         </td>
-         <td>
-           {{ $object->title[0] ?? 'No title has been created' }}
-         </td>
-         <td>
-           {{ ucfirst($object->object_name[0] ?? '') }}
-         </td>
-         <td>
-           {{ $object->creator[0] ?? '' }}
-         </td>
-
-         <td>
-           {{ $object->{"current_location.description"}[0] }}
-         <td>
-           {{ $object->current_location[0] }}
-         </td>
-
-       </tr>
-     @endforeach
-   </tbody>
+        <td>
+          {{ $object->{"current_location.description"}[0] }}
+        <td>
+          {{ $object->current_location[0] }}
+        </td>
+        <td>
+          {{ Carbon\Carbon::parse($object->{"@attributes"}->modification )->format('d-m-Y h:m a')}}
+        </td>
+    	</tr>
+    @endforeach
+	</tbody>
 </table>
+<div class="d-flex justify-content-center">
+  <nav aria-label="Page navigation" >
+    {{ $adlibData->appends(request()->except('page'))->links('vendor.pagination.bootstrap-4') }}
+  </nav>
+</div>
 @endsection

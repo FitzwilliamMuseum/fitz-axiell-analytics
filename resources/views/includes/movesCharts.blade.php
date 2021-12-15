@@ -1,5 +1,5 @@
 @php
-$array = $adlibData->adlibJSON->recordList->record;
+$array = $chartData->adlibJSON->recordList->record;
 $departments = [];
 foreach ($array as $object) {
     if (isset($object->administration_name[0])) {
