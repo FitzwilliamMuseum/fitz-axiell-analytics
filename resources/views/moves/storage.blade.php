@@ -7,8 +7,6 @@
   <a class="btn btn-dark" href="{{ route('moves.storage',['week']) }}">Last 7 days</a>
   <a class="btn btn-dark" href="{{ route('moves.storage',['month']) }}">Last month</a>
   <a class="btn btn-dark" href="{{ route('moves.storage',['quarter']) }}">Quarter</a>
-  <a class="btn btn-dark" href="{{ route('moves.storage',['6month']) }}">Six months</a>
-  <a class="btn btn-dark" href="{{ route('moves.storage',['year']) }}">Last year</a>
   <a class="btn btn-info" href="{{ route('moves') }}">Or see what's moved on display</a>
 </div>
 <p>
