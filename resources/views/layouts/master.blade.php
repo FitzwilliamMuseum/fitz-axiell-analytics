@@ -18,6 +18,5 @@
   </div>
   @include('includes.footer')
   <script src="{{ asset('js/app.js') }}" defer></script>
-  @stack('scripts')
 </body>
 </html>
