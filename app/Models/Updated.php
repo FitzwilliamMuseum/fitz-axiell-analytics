@@ -62,7 +62,7 @@ class Updated {
     if (Cache::has($key)) {
       $data = Cache::get($key);
     } else {
-      $response = Http::get(env('ADLIB_URL').'?&database=objects.uf&search=' . $q. '&limit=0&output=json');
+      $response = Http::get(env('ADLIB_URL').'?&database=objects.uf&search=' . $q. '&limit=10&output=json');
       $data = $response->object();
       Cache::put($key, $data, $expiresAt);
     }

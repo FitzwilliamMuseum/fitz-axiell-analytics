@@ -16,7 +16,7 @@
   <div class="container-fluid">
     @yield('content')
   </div>
-
+  @include('includes.footer')
   <script src="{{ asset('js/app.js') }}" defer></script>
   @stack('scripts')
 </body>

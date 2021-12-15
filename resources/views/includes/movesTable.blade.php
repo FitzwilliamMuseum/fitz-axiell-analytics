@@ -11,7 +11,7 @@ foreach ($array as $object) {
     }
 }
 @endphp
-
+@if(!@empty($departments))
 <table class="table table-bordered table-striped ">
     <thead class="thead-dark">
       <tr>
@@ -33,3 +33,6 @@ foreach ($array as $object) {
      @endforeach
    </tbody>
 </table>
+@else
+ <p>Nothing happened in this date range</p>
+@endempty

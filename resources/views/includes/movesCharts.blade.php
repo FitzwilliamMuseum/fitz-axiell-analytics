@@ -11,17 +11,15 @@ foreach ($array as $object) {
     }
 }
 @endphp
+
+@if(!@empty($departments))
 <div id="linechart" style="width: 800px; height: 500px"></div>
-
-
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
-
 google.charts.load('current', {
   'packages': ['corechart']
 });
 google.charts.setOnLoadCallback(lineChart);
-
 function lineChart() {
   var data = new google.visualization.DataTable();
   data.addColumn('string', 'Department');
@@ -43,3 +41,4 @@ function lineChart() {
   chart.draw(data, options);
 }
 </script>
+@endempty
