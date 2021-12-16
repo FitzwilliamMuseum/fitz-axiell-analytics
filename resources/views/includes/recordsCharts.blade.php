@@ -13,7 +13,12 @@ foreach ($array as $object) {
 @endphp
 
 @if(!@empty($departments))
-<div id="linechart" style="width: 800px; height: 500px"></div>
+  <div class="row">
+    <div class="col-md-6">
+      <div id="chart" style="width: 100%; min-height: 500px"></div>
+    </div>
+  </div>
+
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
 google.charts.load('current', {
@@ -37,8 +42,12 @@ function lineChart() {
       position: 'right'
     }
   };
-  var chart = new google.visualization.PieChart(document.getElementById('linechart'));
+  var chart = new google.visualization.PieChart(document.getElementById('chart'));
   chart.draw(data, options);
+  $(window).resize(function(){
+    lineChart();
+  });
 }
+
 </script>
 @endempty
