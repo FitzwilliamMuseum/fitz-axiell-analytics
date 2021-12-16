@@ -17,7 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\IndexController@index')->name('home');
 Route::get('/moves/on-display/{timespan?}', 'App\Http\Controllers\LocationMovesController@moves')->name('moves');
+Route::get('/moves-export/on-display/{timespan?}', 'App\Http\Controllers\LocationMovesController@displayExport')->name('display.export');
+
 Route::get('/moves/in-storage/{timespan?}', 'App\Http\Controllers\LocationMovesController@storage')->name('moves.storage');
+Route::get('/moves-export/in-storage/{timespan?}', 'App\Http\Controllers\LocationMovesController@storageExport')->name('storage.export');
+
 Route::get('/createdexport/{timespan?}', 'App\Http\Controllers\TemporalController@createdExport')->name('created.export');
 
 Route::get('/created/{timespan?}', 'App\Http\Controllers\TemporalController@created')->name('created');

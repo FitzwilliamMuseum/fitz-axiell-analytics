@@ -2,11 +2,11 @@
 
 namespace App\Exports;
 
-use App\Models\Updated;
+use App\Models\Locations;
 use Maatwebsite\Excel\Concerns\FromArray;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class UpdatedExports implements FromArray, WithHeadings
+class StorageExports implements FromArray, WithHeadings
 {
 
     /**
@@ -14,7 +14,7 @@ class UpdatedExports implements FromArray, WithHeadings
     */
     public function array(): array
     {
-        $data = Updated::getUpdatedDataCharts(request());
+        $data = Locations::getLocationDataCharts(request(), 'storage');
         $records = array();
         foreach($data->adlibJSON->recordList->record as $object){
           // dd($object);
@@ -24,15 +24,13 @@ class UpdatedExports implements FromArray, WithHeadings
           $a['created'] = $object->{'@attributes'}->created;
           $a['modified'] = $object->{'@attributes'}->modification;
           $a['department'] = $object->administration_name[0]->value[1];
-          $a['location'] = $object->current_location[0];
-
           $records[] = $a;
         }
         return $records;
     }
 
     public function headings(): array {
-      return array('priref','accessionNumber','created','modified','department','location' );
+      return array('priref','accessionNumber','created','modified','department' );
     }
 
 }

@@ -12,6 +12,8 @@
 <p>
   Number of objects: {{ $adlibData->total()  }}
 </p>
+<a class="btn btn-info mb-2" href="{{ route('storage.export', [request()->segment(3)]) }}">Download data as csv</a>
+
 @if($adlibData->onFirstPage())
 @include('includes.movesCharts')
 @endif
