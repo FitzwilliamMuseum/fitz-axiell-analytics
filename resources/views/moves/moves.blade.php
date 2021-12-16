@@ -3,12 +3,12 @@
 @section('content')
 <h1 class="display-4 text-center my-3">Location Moves: Objects on display</h1>
 <div class="my-2">
-  <a class="btn btn-dark" href="{{ route('moves',['week']) }}">Last 7 days</a>
-  <a class="btn btn-dark" href="{{ route('moves',['month']) }}">Last month</a>
-  <a class="btn btn-dark" href="{{ route('moves',['quarter']) }}">Quarter</a>
-  <a class="btn btn-dark" href="{{ route('moves',['6month']) }}">Six months</a>
-  <a class="btn btn-dark" href="{{ route('moves',['year']) }}">Last year</a>
-  <a class="btn btn-info" href="{{ route('moves.storage') }}">Or see what's moved in storage</a>
+  <a class="btn btn-dark mr-1 mb-2" href="{{ route('moves',['week']) }}">Last 7 days</a>
+  <a class="btn btn-dark mr-1 mb-2" href="{{ route('moves',['month']) }}">Last month</a>
+  <a class="btn btn-dark mr-1 mb-2" href="{{ route('moves',['quarter']) }}">Quarter</a>
+  <a class="btn btn-dark mr-1 mb-2" href="{{ route('moves',['6month']) }}">Six months</a>
+  <a class="btn btn-dark mr-1 mb-2" href="{{ route('moves',['year']) }}">Last year</a>
+  <a class="btn btn-info mb-2" href="{{ route('moves.storage') }}">Or see what's moved in storage</a>
 </div>
 
 <p>

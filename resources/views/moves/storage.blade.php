@@ -4,10 +4,10 @@
 
 <h1 class="display-4 text-center my-3">Location Moves: Objects in storage</h1>
 <div class="my-2">
-  <a class="btn btn-dark" href="{{ route('moves.storage',['week']) }}">Last 7 days</a>
-  <a class="btn btn-dark" href="{{ route('moves.storage',['month']) }}">Last month</a>
-  <a class="btn btn-dark" href="{{ route('moves.storage',['quarter']) }}">Quarter</a>
-  <a class="btn btn-info" href="{{ route('moves') }}">Or see what's moved on display</a>
+  <a class="btn btn-dark mr-1 mb-2" href="{{ route('moves.storage',['week']) }}">Last 7 days</a>
+  <a class="btn btn-dark mr-1 mb-2" href="{{ route('moves.storage',['month']) }}">Last month</a>
+  <a class="btn btn-dark mr-1 mb-2" href="{{ route('moves.storage',['quarter']) }}">Quarter</a>
+  <a class="btn btn-info mb-2" href="{{ route('moves') }}">Or see what's moved on display</a>
 </div>
 <p>
   Number of objects: {{ $adlibData->total()  }}

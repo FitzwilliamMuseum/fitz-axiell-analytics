@@ -18,5 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\IndexController@index')->name('home');
 Route::get('/moves/on-display/{timespan?}', 'App\Http\Controllers\LocationMovesController@moves')->name('moves');
 Route::get('/moves/in-storage/{timespan?}', 'App\Http\Controllers\LocationMovesController@storage')->name('moves.storage');
-Route::get('/created/{timespan?}', 'App\Http\Controllers\CreatedController@index')->name('created');
-Route::get('/updated/{timespan?}', 'App\Http\Controllers\CreatedController@updated')->name('updated');
+Route::get('/createdexport/{timespan?}', 'App\Http\Controllers\TemporalController@createdExport')->name('created.export');
+
+Route::get('/created/{timespan?}', 'App\Http\Controllers\TemporalController@created')->name('created');
+Route::get('/updatedexport/{timespan?}', 'App\Http\Controllers\TemporalController@updatedExport')->name('updated.export');
+
+Route::get('/updated/{timespan?}', 'App\Http\Controllers\TemporalController@updated')->name('updated');

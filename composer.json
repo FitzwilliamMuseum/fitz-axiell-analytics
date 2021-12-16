@@ -14,6 +14,7 @@
         "guzzlehttp/guzzle": "^7.2",
         "laravel/ui": "^3.4",
         "laraveldaily/laravel-charts": "^0.1.28",
+        "maatwebsite/excel": "^3.1",
         "sven/artisan-view": "^3.3",
         "upthemedia/xss-protection": "^0.0.8"
     },

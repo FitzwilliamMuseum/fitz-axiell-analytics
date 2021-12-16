@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Locations;
 use App\Models\Updated;
+use App\Models\Created;
+
 class IndexController extends Controller
 {
 
@@ -14,8 +16,8 @@ class IndexController extends Controller
   {
     $display = Locations::getLocationDataCharts($request, 'display');
     $storage = Locations::getLocationDataCharts($request, 'storage');
-    $created = Updated::getCreatedData($request);
-    $updated = Updated::getUpdatedData($request);
+    $created = Created::getCreatedDataCharts($request);
+    $updated = Updated::getUpdatedDataCharts($request);
     return view('index.index', compact('display', 'storage', 'created', 'updated'));
   }
 }

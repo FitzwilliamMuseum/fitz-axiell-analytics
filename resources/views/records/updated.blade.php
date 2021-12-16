@@ -3,18 +3,21 @@
 @section('content')
 <h1 class="display-4 text-center my-3">Updated records</h1>
 <div class="my-2">
-  <a class="btn btn-dark" href="{{ route('updated',['week']) }}">Last 7 days</a>
-  <a class="btn btn-dark" href="{{ route('updated',['month']) }}">Last month</a>
-  <a class="btn btn-info" href="{{ route('created') }}">Or see what was created?</a>
-
+  <a class="btn btn-dark mr-1 mb-2" href="{{ route('updated',['week']) }}">Last 7 days</a>
+  <a class="btn btn-dark mr-1 mb-2" href="{{ route('updated',['month']) }}">Last month</a>
+  <a class="btn btn-info mb-2" href="{{ route('created') }}">Or see what was created?</a>
 </div>
+
 <p>
-  Number of objects: {{$adlibData->adlibJSON->diagnostic->hits}}
+  Number of objects: {{ $adlibData->total() }}
 </p>
+<a class="btn btn-info mb-2" href="{{ route('updated.export', [request()->segment(2)]) }}">Download data as csv</a>
 
+@if($adlibData->onFirstPage())
 @include('includes.recordsCharts')
+@endif
 
-@if(preg_match('/\d{4}\-\d{2}\-\d{2}/', $adlibData->adlibJSON->diagnostic->search, $matches))
+@if(preg_match('/\d{4}\-\d{2}\-\d{2}/', $adlibData->items()['adlibJSON']->diagnostic->search, $matches))
 <div class="alert alert-info text-center">
   Search starts from: {{ Carbon\Carbon::parse($matches[0])->format('l dS F Y')  }} <strong>Today's date is {{ Carbon\Carbon::today()->format('l dS F Y')   }}</strong>
 </div>
@@ -35,7 +38,7 @@
     </thead>
 
     <tbody>
-     @foreach ($adlibData->adlibJSON->recordList->record as $object)
+     @foreach ($adlibData->items()['adlibJSON']->recordList->record as $object)
        {{-- @dd($object) --}}
        <tr>
          <th scope="row">
@@ -72,4 +75,10 @@
      @endforeach
    </tbody>
 </table>
+
+<div class="d-flex justify-content-center">
+  <nav aria-label="Page navigation" >
+    {{ $adlibData->appends(request()->except('page'))->links('vendor.pagination.bootstrap-4') }}
+  </nav>
+</div>
 @endsection

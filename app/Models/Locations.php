@@ -75,7 +75,6 @@ class Locations {
       $data = $response->object();
       Cache::put($key, $data, $expiresAt);
     }
-
     return $data;
   }
 }
