@@ -24,14 +24,15 @@ class DisplayExports implements FromArray, WithHeadings
           $a['created'] = $object->{'@attributes'}->created;
           $a['modified'] = $object->{'@attributes'}->modification;
           $a['department'] = $object->administration_name[0]->value[1];
-          $a['location'] = $object->current_location[0];
+          $a['exactlocation'] = $object->current_location[0];
+          $a['location'] = $object->{"current_location.description"}[0];
           $records[] = $a;
         }
         return $records;
     }
 
     public function headings(): array {
-      return array('priref','accessionNumber','created','modified','department','location' );
+      return array('priref','accessionNumber','created','modified','department','exactlocation','location' );
     }
 
 }
