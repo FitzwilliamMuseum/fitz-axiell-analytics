@@ -4,7 +4,15 @@
   <div class="container">
     @foreach($data->adlibJSON->recordList->record as $object)
       <h1 class="display-4 text-center my-2">{{ $object->object_number[0] }}: {{ ucfirst($object->object_name[0]) }} </h1>
-      <div class="col-md-12">
+      <div class="row">
+      @if(!@empty( $ciim->multimedia))
+      <div class="col-md-4">
+          <img src="{{ env('MEDIA_URL') }}{{ $ciim->multimedia[0]->processed->large->location }}" class="img-fluid" />
+      </div>
+      <div class="col-md-8">
+      @else
+        <div class="col-md-12">
+          @endif
         @if(!empty($object->{"current_location.type"}))
         <div class="alert alert-info text-center text-white bg-dark">
           <h2 class="display-2 text-center">{{ ucfirst($object->{"current_location.type"}[0]) }}</h2>
@@ -79,5 +87,6 @@
         {{-- @dump($data->adlibJSON->recordList->record[0]) --}}
 
       @endforeach
+    </div>
     </div>
   @endSection
