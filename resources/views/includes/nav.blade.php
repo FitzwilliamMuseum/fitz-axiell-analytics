@@ -9,6 +9,10 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ route('home') }}">Analytics dashboard</a>
       </li>
+      <li>
+        <a class="nav-link" href="{{ route('object') }}">Find an object</a>
+
+      </li>
       <li class="nav-item">
         <a class="nav-link " aria-current="page" href="https://intranet.fitzmuseum.cam.ac.uk">Intranet</a>
       </li>
@@ -20,5 +24,11 @@
         <a class="nav-link " href="http://adlib.fitzmuseum.cam.ac.uk/Collections/" >Axiell Collections</a>
       </li>
     </ul>
+    {{ \Form::open(['url' => route('object.results'),'method' => 'GET', 'class' => 'form-inline ml-auto']) }}
+  <label for="search" class="sr-only">Search: </label>
+  <input id="query" name="query" type="text" class="form-control mr-sm-2"
+  placeholder="Search for an object" required value="{{ old('query') }}" aria-label="Your query">
+  <button type="submit" class="btn btn-outline-light my-2 my-sm-0" id="searchButton" aria-label="Submit your search">Search</button>
+{!! Form::close() !!}
   </div>
 </nav>

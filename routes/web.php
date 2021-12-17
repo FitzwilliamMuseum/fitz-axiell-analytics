@@ -28,3 +28,5 @@ Route::get('/created/{timespan?}', 'App\Http\Controllers\TemporalController@crea
 Route::get('/updatedexport/{timespan?}', 'App\Http\Controllers\TemporalController@updatedExport')->name('updated.export');
 
 Route::get('/updated/{timespan?}', 'App\Http\Controllers\TemporalController@updated')->name('updated');
+Route::get('/object/', 'App\Http\Controllers\ObjectsController@index')->name('object');
+Route::get('/object/results', 'App\Http\Controllers\ObjectsController@results')->name('object.results');
