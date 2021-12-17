@@ -41,20 +41,20 @@
 
         @if(!@empty($object->description))
           @foreach ($object->description as $description)
-            <p>{{ $description ?? ''}}</p>
+            <p>{{ ucfirst($description) ?? ''}}</p>
           @endforeach
         @endif
 
         @if(!@empty($object->{"production.notes"}))
           @foreach ($object->{"production.notes"} as $description)
-            <p>{!! $description ?? '' !!}</p>
+            <p>{!! ucfirst($description) ?? '' !!}</p>
           @endforeach
         @endif
 
         @if(!@empty($object->{"production.notes"}))
         <p>{{ $object->credit_line[0] ?? ''}}
         @endif
-
+        @if(!@empty($object->creator))
           @php
           if($object->creator[0] != ''){
             $creators = array_combine($object->creator, $object->{'creator.role'} );
@@ -70,7 +70,7 @@
               @endforeach
             </ul>
           @endempty
-
+        @endif
           @if(!@empty ($object->exhibition))
             <h2 class="lead">Has this been exhibited anywhere?</h2>
             <ul>
