@@ -33,7 +33,7 @@ class Updated {
         $q ='edit.date%3E%22today-8%22';
     }
     $sort = urlencode(' sort edit.date descending ');
-    $key = md5(serialize('updated'. $q . $sort));
+    $key = md5(serialize('updated'. $q . $sort . $request->page));
     $expiresAt = now()->addMinutes(60);
     if (Cache::has($key)) {
       $data = Cache::get($key);

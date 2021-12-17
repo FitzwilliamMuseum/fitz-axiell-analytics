@@ -31,7 +31,7 @@ class Locations {
         $q ='current_location.date%3E%22today-8%22%20and%20';
     }
     $sort = urlencode(' sort edit.date descending ');
-    $key = md5(serialize($location . $q . $perPage . $offset . $sort));
+    $key = md5(serialize($location . $q . $perPage . $offset . $sort . $request->page));
     $expiresAt = now()->addMinutes(60);
     if (Cache::has($key)) {
       $data = Cache::get($key);
