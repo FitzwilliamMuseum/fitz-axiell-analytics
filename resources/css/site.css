@@ -171,3 +171,22 @@ a.nav-link {
   color: hsla(0,0%,100%,.5);
   background-color: transparent;
 }
+
+h3.lead.collection {
+    width: fit-content;
+    border-bottom: 0.5px #000 double;
+    margin-bottom: 10px;
+}
+li.square {
+  list-style: square;
+}
+.bg-purple {
+  background-color: #563d7c;
+}
+.bg-grey{
+  background-color: #97816224;
+  padding-top: 10px;
+}
+.bg-gbdo {
+  background-color: #a3c1ad;
+}

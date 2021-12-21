@@ -14,10 +14,9 @@
   @include('includes.nav')
 
   <div class="container-fluid">
-    
     @yield('content')
-
   </div>
+  @yield('metadata')
   @include('includes.footer')
   <script src="{{ asset('js/app.js') }}" defer></script>
   @yield('scripts')
