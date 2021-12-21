@@ -32,7 +32,7 @@
 @endSection
 
 @section('metadata')
-  <div class="container-fluid bg-grey pt-3">
+  <div class="container-fluid bg-grey py-3">
     <div class="container">
         <div class="col-md-12">
         @if(!empty($object->{"current_location.type"}))
