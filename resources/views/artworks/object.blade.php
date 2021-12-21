@@ -53,7 +53,7 @@
       @endif
       <h3 class="lead collection">What is the accession number?</h3>
       <p>{{ $object->object_number[0] }}</p>
-      <a class="btn btn-success my-2" href="https://collection.beta.fitz.ms/id/object/{{ $object->priref[0] }}">View this online</a>
+      <a class="btn btn-success my-2" href="https://collection.beta.fitz.ms/id/object/{{ $object->priref[0] }}">View the public facing record on collections explorer</a>
 
         @if(!@empty($object->object_name))
           <h3 class="lead collection">What type of object is this?</h3>
