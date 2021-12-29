@@ -1,6 +1,8 @@
 @php
-$array = $chartData->adlibJSON->recordList->record;
 $departments = [];
+if(isset($chartData->adlibJSON->recordList)){
+$array = $chartData->adlibJSON->recordList->record;
+
 foreach ($array as $object) {
     if (isset($object->administration_name[0])) {
         $department = $object->administration_name[0]->value[1];
@@ -9,6 +11,7 @@ foreach ($array as $object) {
         }
         $departments[$department]++;
     }
+}
 }
 @endphp
 

@@ -25,6 +25,8 @@
   Search starts from: {{ Carbon\Carbon::parse($matches[0])->format('l dS F Y')  }} <strong>Today's date is {{ Carbon\Carbon::today()->format('l dS F Y')   }}</strong>
 </div>
 @endif
+
+@if(@isset($adlibData->items()['adlibJSON']->recordList))
 <div class="alert alert-danger my-2 text-center">If an object was created within the last 6 hours, the collections explorer link will not work</div>
 <table class="table table-bordered table-striped table-responsive">
     <thead class="thead-dark">
@@ -83,4 +85,7 @@
     {{ $adlibData->appends(request()->except('page'))->links('vendor.pagination.bootstrap-4') }}
   </nav>
 </div>
+@else
+  <p>No data recorded for this period</p>
+@endif
 @endsection

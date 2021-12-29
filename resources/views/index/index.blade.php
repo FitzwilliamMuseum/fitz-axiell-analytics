@@ -44,14 +44,16 @@
   @php
   function parseObject($array){
       $departments = [];
-      foreach ($array->adlibJSON->recordList->record as $object) {
-          if (isset($object->administration_name[0])) {
-              $department = $object->administration_name[0]->value[1];
-              if (!isset($departments[$department])) {
-                  $departments[$department] = 0;
-              }
-              $departments[$department]++;
-          }
+      if(isset($array->adlibJSON->recordList)){
+        foreach ($array->adlibJSON->recordList->record as $object) {
+            if (isset($object->administration_name[0])) {
+                $department = $object->administration_name[0]->value[1];
+                if (!isset($departments[$department])) {
+                    $departments[$department] = 0;
+                }
+                $departments[$department]++;
+            }
+        }
       }
       return $departments;
     }
