@@ -1,3 +1,4 @@
+@isset($data->adlibJSON->recordList)
 @php
 $array = $data->adlibJSON->recordList->record;
 $departments = [];
@@ -36,3 +37,6 @@ foreach ($array as $object) {
 @else
  <p>Nothing happened in this date range</p>
 @endempty
+@else
+    <p>Nothing happened in this date range</p>
+@endisset
