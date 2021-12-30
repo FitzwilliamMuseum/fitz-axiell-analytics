@@ -30,10 +30,10 @@ class LocationMovesController extends Controller
 	}
 
 	public function displayExport(Request $request) {
-		return Excel::download(new DisplayExports, 'display'.$request->segment(3).'.csv');
+		return Excel::download(new DisplayExports, 'display' . $request->segment(3) . '.csv');
 	}
 
 	public function storageExport(Request $request) {
-		return Excel::download(new StorageExports, 'storage'.$request->segment(3).'.csv');
+		return Excel::download(new StorageExports, 'storage' . $request->segment(3) . '.csv');
 	}
 }

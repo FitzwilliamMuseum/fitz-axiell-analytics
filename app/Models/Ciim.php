@@ -11,7 +11,7 @@ class Ciim {
     if (Cache::has($key)) {
       $data = Cache::get($key);
     } else {
-      $response = Http::get(env('COLLECTION_URL').'/id/object/'. $id . '/json');
+      $response = Http::get(env('COLLECTION_URL') . '/id/object/' . $id . '/json');
       $data = $response->object();
       Cache::put($key, $data, $expiresAt);
     }

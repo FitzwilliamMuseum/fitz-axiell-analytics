@@ -8,7 +8,6 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class CreatedExports implements FromArray, WithHeadings
 {
-
     /**
     * @return \Illuminate\Support\Collection
     */
@@ -17,20 +16,27 @@ class CreatedExports implements FromArray, WithHeadings
         $data = Created::getCreatedDataCharts(request());
         $records = array();
         foreach($data->adlibJSON->recordList->record as $object){
-          // dd($object);
-          $a = array();
-          $a['id'] = $object->{'@attributes'}->priref;
-          $a['accessionNumber'] = $object->object_number['0'];
-          $a['created'] = $object->{'@attributes'}->created;
-          $a['modified'] = $object->{'@attributes'}->modification;
-          $a['department'] = $object->administration_name[0]->value[1];
-          $records[] = $a;
+          $row = array();
+          $row['id'] = $object->{'@attributes'}->priref;
+          $row['accessionNumber'] = $object->object_number['0'];
+          $row['created'] = $object->{'@attributes'}->created;
+          $row['modified'] = $object->{'@attributes'}->modification;
+          $row['department'] = $object->administration_name[0]->value[1];
+          $records[] = $row;
         }
         return $records;
     }
-
+    /**
+     * [headings description]
+     * @return array [description]
+     */
     public function headings(): array {
-      return array('priref','accessionNumber','created','modified','department' );
+      return array(
+        'priref',
+        'accessionNumber',
+        'created',
+        'modified',
+        'department'
+      );
     }
-
 }

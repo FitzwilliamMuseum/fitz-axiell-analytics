@@ -26,7 +26,7 @@ class TemporalController extends Controller
 	}
 
 	public function createdExport(Request $request) {
-		return Excel::download(new CreatedExports, 'created'.$request->segment(3).'.csv');
+		return Excel::download(new CreatedExports, 'created' . $request->segment(3) . '.csv');
 	}
 
 	/**
@@ -42,6 +42,6 @@ class TemporalController extends Controller
 	}
 
 	public function updatedExport(Request $request) {
-		return Excel::download(new UpdatedExports, 'updated'.$request->segment(3).'.csv');
+		return Excel::download(new UpdatedExports, 'updated' . $request->segment(3) . '.csv');
 	}
 }

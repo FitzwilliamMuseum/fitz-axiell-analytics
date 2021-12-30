@@ -36,7 +36,7 @@ class Locations {
     if (Cache::has($key)) {
       $data = Cache::get($key);
     } else {
-      $response = Http::get(env('ADLIB_URL').'?&database=objects.uf&search='. $q .'current_location-%3Elocation.type=' . $location . $sort . '&limit=' . $perPage .'&startfrom=' . $offset . '&output=json');
+      $response = Http::get(env('ADLIB_URL') . '?&database=objects.uf&search=' . $q .'current_location-%3Elocation.type=' . $location . $sort . '&limit=' . $perPage .'&startfrom=' . $offset . '&output=json');
       $data = $response->object();
       Cache::put($key, $data, $expiresAt);
     }
@@ -71,7 +71,7 @@ class Locations {
     if (Cache::has($key)) {
       $data = Cache::get($key);
     } else {
-      $response = Http::get(env('ADLIB_URL').'?&database=objects.uf&search='. $q .'current_location-%3Elocation.type=' . $location . '&limit=0&sort=edit.date&output=json');
+      $response = Http::get(env('ADLIB_URL').'?&database=objects.uf&search=' . $q .'current_location-%3Elocation.type=' . $location . '&limit=0&sort=edit.date&output=json');
       $data = $response->object();
       Cache::put($key, $data, $expiresAt);
     }

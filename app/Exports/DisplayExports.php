@@ -17,22 +17,33 @@ class DisplayExports implements FromArray, WithHeadings
         $data = Locations::getLocationDataCharts(request(), 'display');
         $records = array();
         foreach($data->adlibJSON->recordList->record as $object){
-          // dd($object);
-          $a = array();
-          $a['id'] = $object->{'@attributes'}->priref;
-          $a['accessionNumber'] = $object->object_number['0'];
-          $a['created'] = $object->{'@attributes'}->created;
-          $a['modified'] = $object->{'@attributes'}->modification;
-          $a['department'] = $object->administration_name[0]->value[1];
-          $a['exactlocation'] = $object->current_location[0];
-          $a['location'] = $object->{"current_location.description"}[0];
-          $records[] = $a;
+          $row = array();
+          $row['id'] = $object->{'@attributes'}->priref;
+          $row['accessionNumber'] = $object->object_number['0'];
+          $row['created'] = $object->{'@attributes'}->created;
+          $row['modified'] = $object->{'@attributes'}->modification;
+          $row['department'] = $object->administration_name[0]->value[1];
+          $row['exactlocation'] = $object->current_location[0];
+          $row['location'] = $object->{"current_location.description"}[0];
+          $records[] = $row;
         }
         return $records;
     }
 
+    /**
+     * [headings description]
+     * @return array [description]
+     */
     public function headings(): array {
-      return array('priref','accessionNumber','created','modified','department','exactlocation','location' );
+      return array(
+        'priref',
+        'accessionNumber',
+        'created',
+        'modified',
+        'department',
+        'exactlocation',
+        'location'
+      );
     }
 
 }
