@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\IndexController;
 
 Route::get('/', 'App\Http\Controllers\IndexController@index')->name('home');
+Route::get('/analytics/website/{timespan?}', 'App\Http\Controllers\GoogleController@index')->name('analytics.website');
+Route::get('/analytics/tessitura/{timespan?}', 'App\Http\Controllers\GoogleController@tessitura')->name('analytics.tessitura');
+Route::get('/analytics/collection/{timespan?}', 'App\Http\Controllers\GoogleController@collection')->name('analytics.collection');
+
+
 Route::get('/moves/on-display/{timespan?}', 'App\Http\Controllers\LocationMovesController@moves')->name('moves');
 Route::get('/moves-export/on-display/{timespan?}', 'App\Http\Controllers\LocationMovesController@displayExport')->name('display.export');
 

@@ -11,11 +11,13 @@
         "php": "^7.3|^8.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
+        "google/analytics-data": "^0.7.1",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/ui": "^3.4",
         "laravelcollective/html": "^6.2",
         "laraveldaily/laravel-charts": "^0.1.28",
         "maatwebsite/excel": "^3.1",
+        "spatie/laravel-analytics": "^4.0",
         "spatie/laravel-responsecache": "^7.1",
         "sven/artisan-view": "^3.3",
         "upthemedia/xss-protection": "^0.0.8"
