@@ -21,7 +21,7 @@
         "spatie/laravel-responsecache": "^7.1",
         "sven/artisan-view": "^3.3",
         "upthemedia/xss-protection": "^0.0.8",
-        "ext-bcmath": "*",
+        "ext-bcmath": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
