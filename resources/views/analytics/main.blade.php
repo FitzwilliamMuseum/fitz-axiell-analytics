@@ -12,5 +12,5 @@
 @include('includes.userCount')
 @include('includes.topPages')
 @include('includes.devicesChart')
-@include('includes.geoChart')
+@include('includes.geochart')
 @endsection
