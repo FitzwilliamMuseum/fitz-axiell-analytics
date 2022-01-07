@@ -1,7 +1,7 @@
 @if(!@empty($visitors))
   {{-- @dd($visitors) --}}
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-12">
     <div id="visitors" style="width: 100%; min-height: 500px"></div>
   </div>
 </div>
@@ -17,7 +17,7 @@ function lineChart() {
   data.addColumn('number', 'Page views');
   data.addRows([
     @foreach($visitors as $item)
-    [ new Date({{ Carbon\Carbon::parse($item['date'])->format('Y, m, d') }}),{{ $item['visitors'] }},{{ $item['pageViews'] }}],
+    [ new Date({{ Carbon\Carbon::parse($item['date'])->format('Y, m - 1, d') }}),{{ $item['visitors'] }},{{ $item['pageViews'] }}],
     @endforeach
   ]);
   var options = {
