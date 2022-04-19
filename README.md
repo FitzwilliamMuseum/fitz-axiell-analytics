@@ -1,5 +1,7 @@
 # Simple Adlib reporting
 
+[![DOI](https://zenodo.org/badge/438250158.svg)](https://zenodo.org/badge/latestdoi/438250158)
+
 A simple application that will provide adlib/axiell/google analytics reporting functions and allows one to search for current object location.
 
 ![axiell](https://user-images.githubusercontent.com/286552/164111250-06034927-2c9e-4ee7-92d7-b6f2e9412505.jpg)
